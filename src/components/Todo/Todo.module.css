@@ -11,10 +11,16 @@
   height: 100%;
 }
 
+.checkbox {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  bottom: 24px;
+  right: 20px;
+}
+
 .button {
   position: absolute;
-
-  right: 0;
 
   padding: 20px;
   transition: transform var(--animation-cubicBezier);
@@ -32,11 +38,13 @@
 .deleteButton {
   composes: button;
   top: 0;
+  right: 0;
   color: var(--color-red);
 }
 
 .editButton {
   composes: button;
-  bottom: 0;
+  top: 0;
+  left: 0;
   color: var(--color-lightBlue);
 }

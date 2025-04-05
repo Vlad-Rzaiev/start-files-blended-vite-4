@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { addTodo, deleteTodo, editTodo, getTodos } from './todosOps';
+import { selectFilter } from './filterSlice';
 
 const handlePending = state => {
   state.loading = true;
@@ -63,6 +64,15 @@ export const selectTodos = state => state.todos.items;
 export const selectLoading = state => state.todos.loading;
 export const selectError = state => state.todos.error;
 export const selectCurrentTodo = state => state.todos.currentTodo;
+
+export const selectFilteredTodos = createSelector(
+  [selectTodos, selectFilter],
+  (todos, filter) => {
+    return todos.filter(todo =>
+      todo.text.toLowerCase().includes(filter.toLowerCase()),
+    );
+  },
+);
 
 export const { setCurrentTodo, clearCurrentTodo } = todosSlice.actions;
 
