@@ -11,12 +11,19 @@
   height: 100%;
 }
 
-.checkbox {
+.checkLabel {
   position: absolute;
+  bottom: 12px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.checkbox {
   width: 22px;
   height: 22px;
-  bottom: 24px;
-  right: 20px;
 }
 
 .button {

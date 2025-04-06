@@ -1,11 +1,14 @@
-import Text from '../Text/Text';
+import { useId } from 'react';
 import { RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, editTodo } from '../../redux/todosOps';
 import { setCurrentTodo } from '../../redux/todosSlice';
+import Text from '../Text/Text';
 import style from './Todo.module.css';
 
 const Todo = ({ todo, idx }) => {
+  const checkId = useId();
+
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -31,13 +34,17 @@ const Todo = ({ todo, idx }) => {
         TODO # {idx + 1}
       </Text>
 
-      <input
-        className={style.checkbox}
-        type="checkbox"
-        name="check"
-        checked={todo.completed}
-        onChange={handleChangeComplete}
-      />
+      <label className={style.checkLabel} htmlFor={checkId}>
+        Check
+        <input
+          className={style.checkbox}
+          type="checkbox"
+          name="check"
+          id={checkId}
+          checked={todo.completed}
+          onChange={handleChangeComplete}
+        />
+      </label>
 
       <Text>{todo.text}</Text>
       <button
